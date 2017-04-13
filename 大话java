@@ -1,0 +1,99 @@
+2017.4.11
+下载jdk（baidu），设置环境变量。
+
+1-4 java程序内容
+标识符：命名，第一个字符不可以是数字，可以是英文字母、美元符号或下划线。
+		大小写代表不同意义。
+
+1-5 将变量存入内存
+整数类型：
+			类型		占内存空间		范围
+			Byte		1byte			-27～27-1
+			Short		2 bytes		-215～215-1
+			Int			4 bytes		-231～231-1
+			Long		8 bytes		-263～263-1
+浮点数类型：
+			Float		4 bytes		-3.4×1038～3.4×1038
+			Double		8 bytes		-1.8×10308～1.8×10308
+布尔值：
+			Boolean	1byte			true/false
+字符类型：
+			Char		2bytes			\u0000～\uffff（16-bit Unicode字符）
+注：1bye=8bits
+一般声明：整数-int，小数-double
+字符-单引号；字符串-双引号。
+
+1-5 转型
+自动转型（小到大）：int→long→float→double
+
+练习
+可以编译成功：char x=’//’
+
+
+2-1 java如何运算
+运算符号优先级（上面的优先级高于下面的）
+[]数组索引		()方法调用		.成员取用
+	++		--		+		-		～NOT运算		！逻辑NOT运算		(type)转型		new建立对象实例（右结合）
+		*		/		%
+			+		-		+字符串连接
+				<<带符号左移		>>		>>>无号右移
+					>		>=		<		<=
+						==		!=
+							&		|		^XOR运算
+								&&		||
+									?:条件运算（右结合）
+										=赋值运算（右结合）
+
+2-2 运算符号
+浮点数并不是精准的小数，所以建议不要将浮点数用在==相等比较上，以免结果不如预期。例：100==11.11/0.1111，java会回应false，因为java的计算结果是99.999…
+&和&&，第一式为false，直接得到结果为false，不判断其他条件式，指令周期较短，一般建议用&&。
+XOR运算（^）	异或运算
+公式：（1）x & -1 = x
+	  （2）x ^ y ^ y = x
+
+2017.4.12
+2-3 流程控制
+switch控制：可以比较的数据类型只有char、byte、short、int和enum这5种。
++x+
+
+2-4 特殊流程的处理
+标签功能：continue和break作用范围限制在所在的循环，如果使用嵌套循环，就无法作用到更外层的循环，原因在于循环没有自己的名称。标签属于标识符的一种，而且必须紧邻所代表的循环，否则会编译失败。
+
+练习
+double d=”12”+34.0;错误，”12”+34.0的值为字符串”1234.0”，不可赋给double类型的d，因为类型不符。
+
+
+3-2 数据元素的存取
+for-each是针对每一个元素的，声明price变量是为了依次存储prc数组内的元素值。for-each循环每执行一次，就会将下个元素值存入price变量内，所以price变量代表的是元素值，并非索引值。
+for (int price : prc)
+		System.out.print(price + “ “);
+数组的赋值：
+int[] cntVan = {5, 3, 10};
+int[] cntLisa = cntVan;
+数组的复制：
+double[] prcVan = {200.0 , 350.0, 250.0};
+double[] prcLisa = new double[prcVan.length];
+System.arraycopy(prcVan , 0 , prcLisa , 0 , prcVan.length);
+System.arraycopy(
+prcVan : 源数组, 
+0 ： 从源数组索引值为0的元素开始复制, 
+prcLisa ： 目的数组, 
+0 ： 从目的数组索引值为0的位置开始赋值, 
+prcVan.length ： 需要复制元素的长度);
+数组的排序：
+import java.util.Arrays;//要使用排序功能，必须先import
+……
+Arrays.sort(cntLisa);//导入sort()方法并将要排序的数组变量传入即可做升序排序（小至大）
+
+3-3 二维数据
+二维数组定义方式（系统默认初始值）：
+int[][] bookShop = new int[3][3];
+第一个3：有3个一维数组归属在二维数组bookShop下
+第二个3：每个一维数组都拥有3个元素
+
+
+2017.4.13
+4-2 方法的参数设定——传值与传址的差别
+重载
+
+
